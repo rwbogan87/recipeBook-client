@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 
-const Display = () => {
+const DisplayAll = () => {
     const [display, setDisplay] = useState([])
 
     useEffect(() => {
@@ -36,4 +36,4 @@ const Display = () => {
     )
 }
 
-export default Display;
+export default DisplayAll;
