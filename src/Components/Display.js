@@ -2,23 +2,30 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Card from './Card';
 
-const DisplayAll = () => {
-    const [display, setDisplay] = useState([])
+const DisplayAll = (props) => {
+    const [display, setDisplay] = useState([
+        {
+            "id": 0,
+            "name": "Please log in or create an account"
+        }
+    ])
 
-    useEffect(() => {
-        fetch('http://localhost:3000/recipe/getall', {
-            method: 'GET',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjEyMzU2MTE3LCJleHAiOjE2MTI0NDI1MTd9.eSGdtgrb1-Hk6r4olWHhvwFy_Uo72bO58w8q6NgEgYA'
+        useEffect(() => {
+            if (localStorage.token) {
+            fetch('http://localhost:3000/recipe/getall', {
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.token
+                })
             })
-        })
-            .then(res => res.json())
-            .then(json => {
-                console.log(json)
-                setDisplay(json)
-            })
-    }, [])
+                .then(res => res.json())
+                .then(json => {
+                    setDisplay(json)
+                })} else {
+                    console.log('Error: Login Required')
+                }
+        }, [])
 
     return (
         <div>
