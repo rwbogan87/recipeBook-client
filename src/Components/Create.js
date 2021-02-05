@@ -33,8 +33,19 @@ const Create = (props) => {
             })
     }
 
+    // const Delete = (targetId) => {
+    //     console.log('delete fired');
+    //     console.log(targetId)
+    //     console.log(`targetId ${targetId} deleted`)
+
+    //     const token = localstorage.getItem('token');
+    //     fetch(`http://localhost/3000/recipe/delete/${targetId}`)
+
+
+    // }
+
     const tokenizer = () => {
-        if (!localStorage.token) {
+        if (!props.token && !localStorage.getItem('token')) {
             return (
                 <h1>Login required to create</h1>
             )

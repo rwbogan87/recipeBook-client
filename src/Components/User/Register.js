@@ -20,8 +20,10 @@ const Register = (props) => {
             })
         }).then(response => response.json())
             .then(data => {
-                console.log(data);
                 props.newToken(data.sessionToken);
+                localStorage.setItem('activeUser', data.user.email);
+                window.location.reload(false);
+                console.log('New user created: ', data);
             })
     }
     return (

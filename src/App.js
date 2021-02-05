@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -15,31 +15,35 @@ function App() {
   const [sessionToken, setSessionToken] = useState('');
 
   const updateToken = (newToken) => {
-    localStorage.setItem('token', newToken)
-    setSessionToken(newToken)
+    setSessionToken(newToken);
+    localStorage.setItem('token', newToken);
   }
 
   const clearToken = () => {
-      localStorage.clear();
-      sessionStorage.clear();
-      setSessionToken('');
-      console.log('succesfully logged out')
+    localStorage.clear();
+    setSessionToken('');
+    window.location.reload(false);
+    console.log('Succesfully logged out')
   }
+
+  useEffect(() => {
+  },[]);
 
   return (
     <div className="App">
       <Navbar routes={routes} />
+      <button onClick={clearToken}>Logout</button>
       <Route path="/home">
         <Home />
       </Route>
       <Route path="/display">
-        <DisplayAll token={sessionToken}/>
+        <DisplayAll token={sessionToken} />
       </Route>
       <Route path="/create">
-        <Create />
+        <Create token={sessionToken}/>
       </Route>
       <Route path="/account">
-        <Auth updateToken={updateToken} clearToken={clearToken}/>
+        <Auth updateToken={updateToken} clearToken={clearToken} token={sessionToken}/>
       </Route>
     </div>
   );

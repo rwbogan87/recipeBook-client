@@ -13,16 +13,24 @@ const Login = (props) => {
                 'Content-Type': 'application/json'
             }),
             body: JSON.stringify({
-                user:{
-                email: email,
-                password: password
+                user: {
+                    email: email,
+                    password: password
                 }
             })
         }).then(response => response.json())
             .then(data => {
-                console.log(data);
-                localStorage.setItem('activeUser', data.user.email)
-                props.newToken(data.token);
+                console.log(data.message);
+                if (data.message == "Wrong password") {
+                    alert("Wrong password")
+                } else if (!data.user) {
+                    alert("No user matches your query, please try again")
+                } else {
+                    props.newToken(data.token);
+                    localStorage.setItem('activeUser', data.user.email)
+                    window.location.reload(false);
+                    console.log('New user created: ', data);
+                }
             })
     }
     return (

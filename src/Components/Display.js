@@ -11,12 +11,12 @@ const DisplayAll = (props) => {
     ])
 
         useEffect(() => {
-            if (localStorage.token) {
+            if (props.token || localStorage.getItem('token')) {
             fetch('http://localhost:3000/recipe/getall', {
                 method: 'GET',
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'Authorization': localStorage.token
+                    'Authorization': props.token || localStorage.getItem('token')
                 })
             })
                 .then(res => res.json())
@@ -29,6 +29,7 @@ const DisplayAll = (props) => {
 
     return (
         <div>
+        <>
             {display.map(recipe =>
                 <Card key={recipe.id}
                     name={recipe.name}
@@ -39,6 +40,7 @@ const DisplayAll = (props) => {
                     id={recipe.id}
                 />
             )}
+            </>
         </div>
     )
 }
