@@ -1,3 +1,17 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+
+  /* color scheme purple to blue
+  font: #6830C3;
+  font: #5E60CE;
+  font: #4EA8DE;
+  font: #56CFE1;
+  font: #72EFDD;
+  */
 }
+
+/* color scheme */

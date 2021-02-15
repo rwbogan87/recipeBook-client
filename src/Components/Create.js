@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import './Create.css';
 
 const Create = (props) => {
     const [nameValue, setName] = useState('');
@@ -51,75 +53,73 @@ const Create = (props) => {
             )
         } else {
             return (
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <h1>Create a Recipe</h1>
-                        <div>
-                            <label>Name</label>
-                            <input
-                                required
-                                value={nameValue}
-                                name="name"
-                                onChange={(event) => setName(event.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label>Category</label>
-                            <input
-                                required
-                                value={category}
-                                name="category"
-                                onChange={(event) => setCategory(event.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label>Creator</label>
-                            <input
-                                required
-                                value={creator}
-                                name="creator"
-                                onChange={(event) => setCreator(event.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label>Ingredients (use commas)</label>
-                            <input
-                                required
-                                value={ingredients}
-                                name="ingredients"
-                                onChange={(event) => setIngredients(event.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label>Instructions</label>
-                            <input
-                                required
-                                value={instructions}
-                                name="instructions"
-                                onChange={(event) => setInstructions(event.target.value)}
-                            />
-                        </div>
-                        <div>
-                            <label>Notes</label>
-                            <input
-                                required
-                                value={notes}
-                                name="notes"
-                                onChange={(event) => setNotes(event.target.value)}
-                            />
-                        </div>
-                        <button className="submitButton" type="submit">Submit</button>
-                    </form>
-                </div>
+                <Form onSubmit={handleSubmit} className="createForm">
+                    <h1>Cutting Board</h1>
+                    <FormGroup>
+                        <Label>Name</Label>
+                        <Input
+                            required
+                            value={nameValue}
+                            name="name"
+                            onChange={(event) => setName(event.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Category</Label>
+                        <Input
+                            required
+                            value={category}
+                            name="category"
+                            onChange={(event) => setCategory(event.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Creator</Label>
+                        <Input
+                            required
+                            value={creator}
+                            name="creator"
+                            onChange={(event) => setCreator(event.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Ingredients (use commas)</Label>
+                        <Input
+                            required
+                            value={ingredients}
+                            name="ingredients"
+                            onChange={(event) => setIngredients(event.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Instructions</Label>
+                        <Input
+                            required
+                            value={instructions}
+                            name="instructions"
+                            onChange={(event) => setInstructions(event.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Notes</Label>
+                        <Input
+                            required
+                            value={notes}
+                            name="notes"
+                            onChange={(event) => setNotes(event.target.value)}
+                        />
+                    </FormGroup>
+                    <Button className="submitButton" type="submit">Submit</Button>
+                </Form>
             )
         }
 
     }
 
     return (
-        <div>
+        <FormGroup>
             {tokenizer()}
-        </div>
+        </FormGroup>
     )
 }
 

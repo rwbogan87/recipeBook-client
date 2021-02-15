@@ -1,31 +1,54 @@
 import React from 'react';
+import { useState } from 'react';
+import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './Card.css';
 
-const Card = ({name, category, creator, id, notes, ingredients}) => {
-    const tester=()=>{
-        console.log('awesome');
-        fetch('http://localhost:3000/recipe/getall', {
-            method: 'GET',
+const Recipe = ({ name, category, creator, id, userEmail, notes, ingredients }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle=()=>setIsOpen(!isOpen);
+
+    const deleteRecipe = () => {
+        const token = localStorage.getItem('token');
+        console.log('delete triggered', id);
+        fetch(`http://localhost:3000/recipe/${id}`, {
+            method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjEyMzU2MTE3LCJleHAiOjE2MTI0NDI1MTd9.eSGdtgrb1-Hk6r4olWHhvwFy_Uo72bO58w8q6NgEgYA'
+                'Authorization': token
             })
-        })
-            .then(res => res.json())
-            .then(json => {
-                console.log(json)
-            })
+        }).then(() => console.log('recipe deleted'))
+            .then(
+                window.location.reload(false),
+                alert("Recipe deleted")
+            )
+
+    }
+
+    const capitalize = (data) => {
+        if (data) {
+        return data.charAt(0).toUpperCase() + data.slice(1)
+        } else {
+            return 'Unknown creator'
+        }
     }
 
     return (
-        <div key={id} className="recipe">
-            <h2 onClick={tester}>{name}</h2>
-            <p>{creator}</p>
-            <p>{category}</p>
-            <p>{ingredients}</p>
-            <p>{notes}</p>
-        </div>
+        <Card key={id} className="recipe">
+            <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>
+            {capitalize(name)} by {capitalize(creator)}
+            </Button>
+            <Collapse isOpen={isOpen}>
+            {/* <CardBody>{name}</CardBody>
+            <CardBody>{creator}</CardBody> */}
+            <CardBody>{category}</CardBody>
+            <CardBody>{ingredients}</CardBody>
+            <CardBody>{notes}</CardBody>
+            <CardBody>{id}</CardBody>
+            <CardBody>submitted by {userEmail}</CardBody>
+            <Button onClick={() => { deleteRecipe() }}>Delete</Button>
+            </Collapse>
+        </Card>
     )
 }
 
-export default Card;
+export default Recipe;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Register from './Register';
 import Login from './Login';
+import { Form, Button } from 'reactstrap';
+import './User.css';
 
 const Auth = (props) => {
     const [toggler, setToggler] = useState(false);
-    const [email, setEmail] = useState("rbogan");
-    const [password, setPassword] = useState("password");
 
 
     useEffect(() => {
@@ -14,21 +14,13 @@ const Auth = (props) => {
 
     if (!localStorage.getItem('token')) {
         return (
-            <div className="auth">
-                <button href="/login" className={"link"} onClick={() => setToggler(!toggler)}>{toggler ? 'Existing Users' : 'New Users'}</button>
+            <div className="authDiv">
+                <button href="/login" className={"link"} onClick={() => setToggler(!toggler)}>{toggler ? 'Have an account? Click Here' : 'New User? Click Here'}</button>
                 {toggler ? (
-                    <Register
-                        setEmail={setEmail}
-                        email={email}
-                        password={password}
-                        setPassword={setPassword}
-                        newToken={props.updateToken}
+                        <Register
+                            newToken={props.updateToken}
                     />) : (
                         <Login
-                            setEmail={setEmail}
-                            email={email}
-                            password={password}
-                            setPassword={setPassword}
                             newToken={props.updateToken}
                         />
                     )}
@@ -37,7 +29,7 @@ const Auth = (props) => {
     } else {
         return (
             <div>
-                <h1>Active user: {localStorage.getItem('activeUser')}</h1>
+            <h3>Thanks! Happy Cooking!</h3>
             </div>
         )
     }

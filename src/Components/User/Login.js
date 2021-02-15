@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -21,43 +22,41 @@ const Login = (props) => {
         }).then(response => response.json())
             .then(data => {
                 console.log(data.message);
-                if (data.message == "Wrong password") {
+                if (data.message === "Wrong password") {
                     alert("Wrong password")
                 } else if (!data.user) {
                     alert("No user matches your query, please try again")
                 } else {
-                    props.newToken(data.token);
                     localStorage.setItem('activeUser', data.user.email)
-                    window.location.reload(false);
-                    console.log('New user created: ', data);
+                    // window.location.reload(false);
+                    props.newToken(data.token);
+                    console.log('User logged in: ', data);
                 }
             })
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <div>
-                    <label>Email</label>
-                    <input
+            <Form onSubmit={handleSubmit}>
+                <h3>Login</h3>
+                <FormGroup>
+                    <Label for="email">Email</Label>
+                    <Input
                         required
                         value={email}
                         name="email"
                         onChange={(event) => setEmail(event.target.value)}
                     />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input
+                </FormGroup>
+                <FormGroup>
+                    <Label>Password</Label>
+                    <Input
                         required
                         value={password}
                         name="password"
                         onChange={(event) => setPassword(event.target.value)}
                     />
-                </div>
-                <button className="submitButton" type="submit">Submit</button>
-            </form>
-        </div>
+                </FormGroup>
+                <Button outline color="primary" className="submitButton" type="submit">Log In Existing User</Button>
+            </Form>
     )
 }
 

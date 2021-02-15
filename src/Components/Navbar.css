@@ -1,3 +1,12 @@
 nav {
-    background-color: rgb(58, 54, 82);
+    padding-top: 10px;
+    background-color: #6830C3;
+    height: 50px;
+    width: auto;
+}
+
+.navLink {
+    margin: 50px;
+    color: white;
+    justify-content: center;
 }

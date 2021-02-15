@@ -1,8 +1,9 @@
-.recipe {
-    width: fit-content;
+.createForm {
+    width: 300px;
     height: auto;
     border: 1px solid #ccc;
     border-radius: 3px;
+    padding: 5px;
     margin: 20px auto;
     box-shadow: 10px 10px 10px #ccc;
-  }
+}
