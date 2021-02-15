@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   font-family: 'Playfair Display', serif;
-
   /* color scheme purple to blue
   font: #6830C3;
   font: #5E60CE;
@@ -15,3 +14,18 @@
 }
 
 /* color scheme */
+
+.authWindow {
+  background-color: #5E60CE;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 10px 10px 10px #ccc;
+  font-size: small;
+  color: white;
+  margin-left: auto;
+  margin-right: 0;
+}

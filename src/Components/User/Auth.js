@@ -3,13 +3,14 @@ import Register from './Register';
 import Login from './Login';
 import { Form, Button } from 'reactstrap';
 import './User.css';
+import NavAppHub from '../navApps/navAppHub';
 
-const Auth = (props) => {
+const Auth = (props, {routes}) => {
     const [toggler, setToggler] = useState(false);
 
 
     useEffect(() => {
-        // console.log(localStorage.token)
+        console.log({routes})
     })
 
     if (!localStorage.getItem('token')) {
@@ -28,9 +29,7 @@ const Auth = (props) => {
         )
     } else {
         return (
-            <div>
-            <h3>Thanks! Happy Cooking!</h3>
-            </div>
+            <NavAppHub />
         )
     }
 }

@@ -54,8 +54,7 @@ const Create = (props) => {
         } else {
             return (
                 <Form onSubmit={handleSubmit} className="createForm">
-                    <h1>Cutting Board</h1>
-                    <FormGroup>
+                    <FormGroup className="formGroup">
                         <Label>Name</Label>
                         <Input
                             required
@@ -64,7 +63,7 @@ const Create = (props) => {
                             onChange={(event) => setName(event.target.value)}
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="formGroup">
                         <Label>Category</Label>
                         <Input
                             required
@@ -73,8 +72,8 @@ const Create = (props) => {
                             onChange={(event) => setCategory(event.target.value)}
                         />
                     </FormGroup>
-                    <FormGroup>
-                        <Label>Creator</Label>
+                    <FormGroup className="formGroup">
+                        <Label>Original Creator</Label>
                         <Input
                             required
                             value={creator}
@@ -82,29 +81,32 @@ const Create = (props) => {
                             onChange={(event) => setCreator(event.target.value)}
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="formGroup">
                         <Label>Ingredients (use commas)</Label>
                         <Input
                             required
                             value={ingredients}
+                            style={{'height': '300px'}}
                             name="ingredients"
                             onChange={(event) => setIngredients(event.target.value)}
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="formGroup">
                         <Label>Instructions</Label>
                         <Input
                             required
                             value={instructions}
+                            style={{'height': '300px'}}
                             name="instructions"
                             onChange={(event) => setInstructions(event.target.value)}
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="formGroup">
                         <Label>Notes</Label>
                         <Input
                             required
                             value={notes}
+                            style={{'height': '200px'}}
                             name="notes"
                             onChange={(event) => setNotes(event.target.value)}
                         />
@@ -117,7 +119,7 @@ const Create = (props) => {
     }
 
     return (
-        <FormGroup>
+        <FormGroup className="formGroup">
             {tokenizer()}
         </FormGroup>
     )

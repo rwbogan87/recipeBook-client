@@ -5,11 +5,6 @@ import Recipe from './Card';
 const DisplayAll = (props) => {
     const [display, setDisplay] = useState([])
 
-    const denied = () => {
-        return (
-            <h1>No recipes to display</h1>
-        )
-    }
     useEffect(() => {
         if (props.token || localStorage.getItem('token')) {
             fetch('http://localhost:3000/recipe/getall', {

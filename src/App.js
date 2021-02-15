@@ -42,8 +42,8 @@ function App() {
   const tokenCheck = () => {
     if (localToken) {
       return (
-        <div>
-          <p>Welcome, {localStorage.getItem('activeUser')}</p>
+        <div className="authWindow">
+          <p>{localStorage.getItem('activeUser')}</p>
           <button onClick={clearToken}>Logout</button>
         </div>
       )
@@ -54,8 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar routes={routes} />
-      {tokenCheck()}
+      <Navbar routes={routes} tokenCheck={tokenCheck()}/>
       <Route exact path="/">
         <Splash />
       </Route>
