@@ -25,7 +25,10 @@ function App() {
   }
   
   useEffect(() => {
-    console.log(`sessionToken: ${sessionToken}`)
+    // console.log(`sessionToken: ${sessionToken}`)
+    if (localToken) {
+      setSessionToken(localToken)
+    }
   }, [sessionToken])
 
   const clearToken = () => {

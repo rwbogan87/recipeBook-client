@@ -5,19 +5,23 @@ import Recipe from './Card';
 const DisplayAll = (props) => {
     const [display, setDisplay] = useState([])
 
+    const denied = () => {
+        return (
+            <h1>No recipes to display</h1>
+        )
+    }
     useEffect(() => {
-        console.log(props.token)
         if (props.token || localStorage.getItem('token')) {
             fetch('http://localhost:3000/recipe/getall', {
                 method: 'GET',
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    Authorization: props.token
+                    Authorization: props.token || localStorage.getItem('token')
                 })
             })
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
+                    // console.log(json)
                     // sort all the recipes alphabetically before setting state
                     json.sort(function (a, b) {
                         let varA = a.name.toUpperCase();
@@ -25,8 +29,7 @@ const DisplayAll = (props) => {
                         return (varA < varB) ? -1 : (varA > varB) ? 1 : 0;
                     })
                     setDisplay(json)
-                    console.log(json)
-                    console.log(display.length)
+                    // console.log(json)
                 })
         } else {
             console.log('no token')
@@ -38,7 +41,7 @@ const DisplayAll = (props) => {
         // token prop or localstorage usable? Allow view
         // 
         return (
-            !props.token ? <h1>Login required to create</h1>
+            !props.token ? <h1>Login required to view</h1>
                 : props.token && display.length > 0 ?
                     <div>
                         {display.map(recipe =>

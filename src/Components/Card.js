@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import './Card.css';
 
@@ -9,20 +9,25 @@ const Recipe = ({ name, category, creator, id, userEmail, notes, ingredients }) 
 
     const deleteRecipe = () => {
         const token = localStorage.getItem('token');
-        console.log('delete triggered', id);
         fetch(`http://localhost:3000/recipe/${id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': token
             })
-        }).then(() => console.log('recipe deleted'))
-            .then(
-                window.location.reload(false),
-                alert("Recipe deleted")
-            )
-
-    }
+        })
+        .then(res => {
+            console.log(res);
+            console.log(res.status)
+            if (res.status === 401) {
+                alert('You may only delete your own recipes')
+                toggle();
+            }
+            else {
+            window.location.reload(false);
+            }
+        })
+        }
 
     const capitalize = (data) => {
         if (data) {
