@@ -10,7 +10,7 @@ import Display from '../Display';
 
 const navAppDisplay = () => {
     return (
-        <Button className="cardButton" href="/Display">Browse Collection</Button>
+        <Button className="cardButton" href="/Display"><p>Browse Collection</p></Button>
     )
 }
 

@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './Create.css';
 
 const Create = (props) => {
+    
     const [nameValue, setName] = useState('');
     const [category, setCategory] = useState('');
     const [creator, setCreator] = useState('');
@@ -11,6 +12,7 @@ const Create = (props) => {
     const [instructions, setInstructions] = useState('');
     const [notes, setNotes] = useState('');
 
+    
     let handleSubmit = (event) => {
         event.preventDefault();
         fetch(`http://localhost:3000/recipe/create`, {
@@ -32,19 +34,14 @@ const Create = (props) => {
         }).then(response => response.json())
             .then(data => {
                 console.log(data);
+                if (data.error == "Not authorized") {
+                    window.confirm("Please log in or create an account to continue")
+                } else {
+                window.confirm("Recipe added!")
+                }
             })
     }
 
-    // const Delete = (targetId) => {
-    //     console.log('delete fired');
-    //     console.log(targetId)
-    //     console.log(`targetId ${targetId} deleted`)
-
-    //     const token = localstorage.getItem('token');
-    //     fetch(`http://localhost/3000/recipe/delete/${targetId}`)
-
-
-    // }
 
     const tokenizer = () => {
         if (!props.token && !localStorage.getItem('token')) {
@@ -54,60 +51,67 @@ const Create = (props) => {
         } else {
             return (
                 <Form onSubmit={handleSubmit} className="createForm">
+                    <p id="feedback"></p>
+                    <h4>Submission Form</h4>
                     <FormGroup className="formGroup">
-                        <Label>Name</Label>
+                        {/* <Label>Dish Name</Label> */}
                         <Input
                             required
                             value={nameValue}
                             name="name"
+                            placeholder="Dish Name"
                             onChange={(event) => setName(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup className="formGroup">
-                        <Label>Category</Label>
+                        {/* <Label>Category</Label> */}
                         <Input
                             required
                             value={category}
                             name="category"
+                            placeholder="Category"
                             onChange={(event) => setCategory(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup className="formGroup">
-                        <Label>Original Creator</Label>
+                        {/* <Label>Original Creator</Label> */}
                         <Input
                             required
                             value={creator}
                             name="creator"
+                            placeholder="Creator"
                             onChange={(event) => setCreator(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup className="formGroup">
-                        <Label>Ingredients (use commas)</Label>
+                        {/* <Label>Ingredients (use commas)</Label> */}
                         <Input
                             required
                             value={ingredients}
-                            style={{'height': '300px'}}
                             name="ingredients"
+                            type="textarea"
+                            placeholder="Ingredients"
                             onChange={(event) => setIngredients(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup className="formGroup">
-                        <Label>Instructions</Label>
+                        {/* <Label>Instructions</Label> */}
                         <Input
                             required
                             value={instructions}
-                            style={{'height': '300px'}}
                             name="instructions"
+                            type="textarea"
+                            placeholder="Instructions"
                             onChange={(event) => setInstructions(event.target.value)}
                         />
                     </FormGroup>
                     <FormGroup className="formGroup">
-                        <Label>Notes</Label>
+                        {/* <Label>Notes</Label> */}
                         <Input
                             required
                             value={notes}
-                            style={{'height': '200px'}}
                             name="notes"
+                            placeholder="Notes"
                             onChange={(event) => setNotes(event.target.value)}
                         />
                     </FormGroup>

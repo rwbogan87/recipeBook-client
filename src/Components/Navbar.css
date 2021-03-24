@@ -2,11 +2,18 @@ nav {
     padding-top: 10px;
     background-color: #6830C3;
     height: 50px;
-    width: auto;
+    box-shadow: 10px 10px 10px #ccc;
+    font-family: 'Rubik', sans-serif;
+    width: 100vw
 }
 
 .navLink {
     margin: 50px;
     color: white;
     justify-content: center;
+}
+
+.navLink:hover {
+    color: black;
+    text-decoration: none;
 }

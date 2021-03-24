@@ -6,7 +6,7 @@ import './App.css';
 
 import Navbar from "./Components/Navbar";
 import Splash from "./Components/Splash"
-import Home from "./Components/Home";
+// import Home from "./Components/Home";
 import DisplayAll from "./Components/Display";
 import FindOther from "./Components/API/Online";
 import Create from "./Components/Create";
@@ -14,9 +14,18 @@ import Auth from "./Components/User/Auth";
 
 
 function App() {
-  const routes = ['Home', 'Display', 'Create', 'Account', 'FindOther'];
+  const routes = ['Display', 'Create', 'Account', 'FindOther'];
   const [sessionToken, setSessionToken] = useState('');
   const localToken = localStorage.getItem('token');
+
+  // stuff for student example
+  // const [students, setStudents] = useState([{
+  //   name: "Andy",
+  //   grade: 11
+  // },{
+  //   name: "Amy",
+  //   grade: 12
+  // }])
 
   const updateToken = (data) => {
     localStorage.setItem('token', data);
@@ -52,15 +61,11 @@ function App() {
     }
   }
 
+  
+
   return (
     <div className="App">
       <Navbar routes={routes} tokenCheck={tokenCheck()}/>
-      <Route exact path="/">
-        <Splash />
-      </Route>
-      <Route path="/home">
-        <Home />
-      </Route>
       <Route path="/findOther">
         <FindOther />
       </Route>
@@ -71,6 +76,9 @@ function App() {
         <Create token={sessionToken} />
       </Route>
       <Route path="/account">
+        <Auth updateToken={updateToken} clearToken={clearToken} />
+      </Route>
+      <Route exact path="/">
         <Auth updateToken={updateToken} clearToken={clearToken} />
       </Route>
     </div>

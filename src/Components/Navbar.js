@@ -5,16 +5,15 @@ import './Navbar.css'
 const Navbar = ({ routes, tokenCheck }) => {
     return (
         <>
-        <nav>
-            {routes.map((route) => {
-                return (
+            <nav>
+                {routes.map((route) => {
+                    return (
                         <Link to={route} key={route} className="navLink">{route}</Link>
-                    
-                )
-            })}
-        </nav>
+                    )
+                })}
+            </nav>
             {tokenCheck}
-</>
+        </>
     )
 }
 

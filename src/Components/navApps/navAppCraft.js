@@ -10,7 +10,7 @@ import Display from '../Display';
 
 const navAppCraft = () => {
     return (
-        <Button className="cardButton" href="/Display">Creation Room</Button>
+        <Button className="cardButton" href="/Create"><p>Creation Room</p></Button>
     )
 }
 

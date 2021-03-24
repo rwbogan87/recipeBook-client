@@ -8,15 +8,12 @@ import NavAppHub from '../navApps/navAppHub';
 const Auth = (props, {routes}) => {
     const [toggler, setToggler] = useState(false);
 
-
-    useEffect(() => {
-        console.log({routes})
-    })
+    
 
     if (!localStorage.getItem('token')) {
         return (
+            <>
             <div className="authDiv">
-                <button href="/login" className={"link"} onClick={() => setToggler(!toggler)}>{toggler ? 'Have an account? Click Here' : 'New User? Click Here'}</button>
                 {toggler ? (
                         <Register
                             newToken={props.updateToken}
@@ -25,11 +22,16 @@ const Auth = (props, {routes}) => {
                             newToken={props.updateToken}
                         />
                     )}
+                <button href="/login" className={"link"} onClick={() => setToggler(!toggler)}>{toggler ? 'Have an account? Click Here' : 'New User? Click Here'}</button>
             </div>
+            </>
         )
     } else {
         return (
+            <>
+            <h4>Logged in as: {localStorage.getItem('activeUser')}</h4><br/>
             <NavAppHub />
+            </>
         )
     }
 }

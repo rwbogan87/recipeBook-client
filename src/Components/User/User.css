@@ -1,9 +1,32 @@
 .authDiv {
-    width: 300px;
+    width: 500px;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 3px;
   padding: 5px;
   margin: 20px auto;
   box-shadow: 10px 10px 10px #ccc;
+  background-color: #5E60CE;
+  font-family: 'Rubik', sans-serif;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+#checkbox {
+  margin: 5px auto;
+  padding: 0px;
+  position: relative
 }

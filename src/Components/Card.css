@@ -1,8 +1,41 @@
 .recipe {
-    width: fit-content;
+    width: 500px;
     height: auto;
     border: 1px solid #ccc;
     border-radius: 3px;
     margin: 20px auto;
     box-shadow: 10px 10px 10px #ccc;
+    background-color: #5E60CE !important;
+    text-align: left;
   }
+
+.collapseButton {
+  background-color: #5E60CE !important;
+}
+
+.titleText {
+  font-size: larger;
+  color: white;
+}
+
+p {
+  font-style: italic;
+  margin-left: 30px;
+  color: white;
+  font-size: small;
+
+}
+
+.cardBody {
+  background-color: white;
+  height: auto;
+}
+
+.deleteButton {
+  background: transparent !important;
+  border: none !important;
+}
+
+.deleteButton#active {
+  background-color: #5a3f86 !important;
+}
