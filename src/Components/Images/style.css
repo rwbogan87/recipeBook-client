@@ -1,0 +1,46 @@
+#gallery {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#frameCanvas {
+    background-color: white;
+    margin: 1em;
+    width: fit-content;
+    height: auto;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+#frame {
+    padding: 2em;
+}
+
+img {
+    height: 300px;
+}
+
+#frameCanvas:hover {
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    -ms-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+    transform: scale(1.15);
+    -ms-transform: scale(1.15); /* IE 9 */
+    -webkit-transform: scale(1.15); /* Safari and Chrome */
+}
+
+#noteTag {
+    color: black;
+    font-size: 1em;
+}
+
+#dateTag {
+    color: black;
+    font-size: 1em;
+}

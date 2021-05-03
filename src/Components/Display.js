@@ -70,3 +70,10 @@ const DisplayAll = (props) => {
     )
 }
 export default DisplayAll;
+
+
+const array = ['one', 'two', 'three', 'one']
+
+const newArray = [...new Set(array)]
+
+console.log(newArray[0])

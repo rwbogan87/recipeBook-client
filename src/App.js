@@ -8,13 +8,14 @@ import Navbar from "./Components/Navbar";
 import Splash from "./Components/Splash"
 // import Home from "./Components/Home";
 import DisplayAll from "./Components/Display";
-import FindOther from "./Components/API/Online";
+import Upload from "./Components/Images/Upload";
+import Gallery from "./Components/Images/Gallery"
 import Create from "./Components/Create";
 import Auth from "./Components/User/Auth";
 
 
 function App() {
-  const routes = ['Display', 'Create', 'Account', 'FindOther'];
+  const routes = ['Display', 'Create', 'Account', 'Upload', 'Gallery'];
   const [sessionToken, setSessionToken] = useState('');
   const localToken = localStorage.getItem('token');
 
@@ -66,8 +67,11 @@ function App() {
   return (
     <div className="App">
       <Navbar routes={routes} tokenCheck={tokenCheck()}/>
-      <Route path="/findOther">
-        <FindOther />
+      <Route path="/upload">
+        <Upload />
+      </Route>
+      <Route path="/gallery">
+        <Gallery />
       </Route>
       <Route path="/display">
         <DisplayAll token={sessionToken} />

@@ -30,7 +30,7 @@ const Auth = (props, {routes}) => {
         return (
             <>
             <h4>Logged in as: {localStorage.getItem('activeUser')}</h4><br/>
-            <NavAppHub />
+            {/* <NavAppHub /> */}
             </>
         )
     }

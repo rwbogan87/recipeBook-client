@@ -38,6 +38,12 @@ const Create = (props) => {
                     window.confirm("Please log in or create an account to continue")
                 } else {
                 window.confirm("Recipe added!")
+                setName('')
+                setCategory('')
+                setCreator('')
+                setIngredients('')
+                setInstructions('')
+                setNotes('')
                 }
             })
     }
@@ -50,7 +56,7 @@ const Create = (props) => {
             )
         } else {
             return (
-                <Form onSubmit={handleSubmit} className="createForm">
+                <Form onSubmit={handleSubmit} className="fade-in-image">
                     <p id="feedback"></p>
                     <h4>Submission Form</h4>
                     <FormGroup className="formGroup">
