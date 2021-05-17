@@ -15,7 +15,7 @@ import Auth from "./Components/User/Auth";
 
 
 function App() {
-  const routes = ['Display', 'Create', 'Account', 'Upload', 'Gallery'];
+  const routes = ['Display', 'Create', 'Account', 'Upload', 'Gallery', 'Cool'];
   const [sessionToken, setSessionToken] = useState('');
   const localToken = localStorage.getItem('token');
 
